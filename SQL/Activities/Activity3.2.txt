@@ -1,0 +1,61 @@
+Statement 1
+CREATE TABLE salesman ( 
+    salesman_id int, 
+    salesman_name varchar2(32), 
+    salesman_city varchar2(32), 
+    commission int 
+)
+Table created.
+Statement 2
+DESCRIBE salesman
+TABLE SALESMAN
+Column	Null?	Type
+SALESMAN_ID	-	NUMBER
+SALESMAN_NAME	-	VARCHAR2(32)
+SALESMAN_CITY	-	VARCHAR2(32)
+COMMISSION	-	NUMBER
+Download CSV
+4 rows selected.
+Statement 3
+INSERT INTO salesman VALUES(5002, 'Nail Knite', 'Paris', 13)
+1 row(s) inserted.
+Statement 4
+INSERT ALL 
+    INTO salesman VALUES(5005, 'Pit Alex', 'London', 11) 
+    INTO salesman VALUES(5006, 'McLyon', 'Paris', 14) 
+    INTO salesman VALUES(5007, 'Paul Adam', 'Rome', 13) 
+    INTO salesman VALUES(5003, 'Lauson Hen', 'San Jose', 12) 
+SELECT 1 FROM DUAL
+4 row(s) inserted.
+Statement 5
+SELECT * FROM salesman
+SALESMAN_ID	SALESMAN_NAME	SALESMAN_CITY	COMMISSION
+5002	Nail Knite	Paris	13
+5005	Pit Alex	London	11
+5006	McLyon	Paris	14
+5007	Paul Adam	Rome	13
+5003	Lauson Hen	San Jose	12
+Download CSV
+5 rows selected.
+Statement 6
+SELECT salesman_id, salesman_city FROM salesman
+SALESMAN_ID	SALESMAN_CITY
+5002	Paris
+5005	London
+5006	Paris
+5007	Rome
+5003	San Jose
+Download CSV
+5 rows selected.
+Statement 7
+SELECT * FROM salesman WHERE salesman_city='Paris'
+SALESMAN_ID	SALESMAN_NAME	SALESMAN_CITY	COMMISSION
+5002	Nail Knite	Paris	13
+5006	McLyon	Paris	14
+Download CSV
+2 rows selected.
+Statement 8
+SELECT salesman_id, commission FROM salesman WHERE salesman_name='Paul Adam'
+SALESMAN_ID	COMMISSION
+5007	13
+Download CSV

@@ -1,0 +1,24 @@
+Statement -1 
+CREATE TABLE salesman ( 
+    salesman_id int, 
+    salesman_name varchar2(32), 
+    salesman_city varchar2(32), 
+    commission int 
+)
+Table created.
+
+Statement 2
+DESCRIBE salesman
+TABLE SALESMAN
+Column	Null?	Type
+SALESMAN_ID	-	NUMBER
+SALESMAN_NAME	-	VARCHAR2(32)
+SALESMAN_CITY	-	VARCHAR2(32)
+COMMISSION	-	NUMBER
+
+4 rows selected.
+Statement 3
+INSERT INTO salesman VALUES(5002, 'Nail Knite', 'Paris', 13)
+1 row(s) inserted.
+
+

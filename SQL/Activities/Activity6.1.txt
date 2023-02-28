@@ -1,0 +1,152 @@
+Statement 1
+UPDATE salesman SET grade=200 WHERE salesman_city='Rome'
+ORA-00942: table or view does not exist
+Statement 2
+CREATE TABLE salesman ( 
+    salesman_id int, 
+    salesman_name varchar2(32), 
+    salesman_city varchar2(32), 
+    commission int 
+)
+Table created.
+Statement 3
+DESCRIBE salesman
+TABLE SALESMAN
+Column	Null?	Type
+SALESMAN_ID	-	NUMBER
+SALESMAN_NAME	-	VARCHAR2(32)
+SALESMAN_CITY	-	VARCHAR2(32)
+COMMISSION	-	NUMBER
+Download CSV
+4 rows selected.
+Statement 4
+INSERT INTO salesman VALUES(5002, 'Nail Knite', 'Paris', 13)
+1 row(s) inserted.
+Statement 5
+INSERT ALL 
+    INTO salesman VALUES(5005, 'Pit Alex', 'London', 11) 
+    INTO salesman VALUES(5006, 'McLyon', 'Paris', 14) 
+    INTO salesman VALUES(5007, 'Paul Adam', 'Rome', 13) 
+    INTO salesman VALUES(5003, 'Lauson Hen', 'San Jose', 12) 
+SELECT 1 FROM DUAL
+4 row(s) inserted.
+Statement 6
+SELECT * FROM salesman
+SALESMAN_ID	SALESMAN_NAME	SALESMAN_CITY	COMMISSION
+5002	Nail Knite	Paris	13
+5005	Pit Alex	London	11
+5006	McLyon	Paris	14
+5007	Paul Adam	Rome	13
+5003	Lauson Hen	San Jose	12
+Download CSV
+5 rows selected.
+Statement 7
+SELECT salesman_id, salesman_city FROM salesman
+SALESMAN_ID	SALESMAN_CITY
+5002	Paris
+5005	London
+5006	Paris
+5007	Rome
+5003	San Jose
+Download CSV
+5 rows selected.
+Statement 8
+SELECT * FROM salesman WHERE salesman_city='Paris'
+SALESMAN_ID	SALESMAN_NAME	SALESMAN_CITY	COMMISSION
+5002	Nail Knite	Paris	13
+5006	McLyon	Paris	14
+Download CSV
+2 rows selected.
+Statement 9
+SELECT salesman_id, commission FROM salesman WHERE salesman_name='Paul Adam'
+SALESMAN_ID	COMMISSION
+5007	13
+Download CSV
+Statement 10
+ALTER TABLE salesman ADD grade int
+Table altered.
+Statement 11
+UPDATE salesman SET grade=100
+5 row(s) updated.
+Statement 12
+SELECT * FROM salesman
+SALESMAN_ID	SALESMAN_NAME	SALESMAN_CITY	COMMISSION	GRADE
+5002	Nail Knite	Paris	13	100
+5005	Pit Alex	London	11	100
+5006	McLyon	Paris	14	100
+5007	Paul Adam	Rome	13	100
+5003	Lauson Hen	San Jose	12	100
+Download CSV
+5 rows selected.
+Statement 13
+UPDATE salesman SET grade=200 WHERE salesman_city='Rome'
+1 row(s) updated.
+Statement 14
+CREATE TABLE salesman (  
+    salesman_id int,  
+    salesman_name varchar2(32),  
+    salesman_city varchar2(32),  
+    commission int  
+)
+ORA-00955: name is already used by an existing object
+Statement 15
+select * from salesman
+SALESMAN_ID	SALESMAN_NAME	SALESMAN_CITY	COMMISSION	GRADE
+5002	Nail Knite	Paris	13	100
+5005	Pit Alex	London	11	100
+5006	McLyon	Paris	14	100
+5007	Paul Adam	Rome	13	200
+5003	Lauson Hen	San Jose	12	100
+Download CSV
+5 rows selected.
+Statement 16
+UPDATE salesman SET grade=200 WHERE salesman_city='Rome'
+1 row(s) updated.
+Statement 17
+UPDATE salesman SET grade=300 WHERE salesman_name='James Hoog'
+0 row(s) updated.
+Statement 18
+select * from salesman
+SALESMAN_ID	SALESMAN_NAME	SALESMAN_CITY	COMMISSION	GRADE
+5002	Nail Knite	Paris	13	100
+5005	Pit Alex	London	11	100
+5006	McLyon	Paris	14	100
+5007	Paul Adam	Rome	13	200
+5003	Lauson Hen	San Jose	12	100
+Download CSV
+5 rows selected.
+Statement 19
+UPDATE salesman SET salesman_name='Pierre' WHERE salesman_name='McLyon'
+1 row(s) updated.
+Statement 20
+create table orders( 
+    order_no int primary key, purchase_amount float, order_date date, 
+    customer_id int, salesman_id int)
+Table created.
+Statement 21
+INSERT ALL 
+    INTO orders VALUES(70001, 150.5, TO_DATE('2012/10/05', 'YYYY/MM/DD'), 3005, 5002)  
+    INTO orders VALUES(70009, 270.65, TO_DATE('2012/09/10', 'YYYY/MM/DD'), 3001, 5005) 
+    INTO orders VALUES(70002, 65.26, TO_DATE('2012/10/05', 'YYYY/MM/DD'), 3002, 5001) 
+    INTO orders VALUES(70004, 110.5, TO_DATE('2012/08/17', 'YYYY/MM/DD'), 3009, 5003) 
+    INTO orders VALUES(70007, 948.5, TO_DATE('2012/09/10', 'YYYY/MM/DD'), 3005, 5002) 
+    INTO orders VALUES(70005, 2400.6, TO_DATE('2012/07/27', 'YYYY/MM/DD'), 3007, 5001) 
+    INTO orders VALUES(70008, 5760, TO_DATE('2012/08/15', 'YYYY/MM/DD'), 3002, 5001) 
+    INTO orders VALUES(70010, 1983.43, TO_DATE('2012/10/10', 'YYYY/MM/DD'), 3004, 5006) 
+    INTO orders VALUES(70003, 2480.4, TO_DATE('2012/10/10', 'YYYY/MM/DD'), 3009, 5003) 
+    INTO orders VALUES(70012, 250.45, TO_DATE('2012/06/27', 'YYYY/MM/DD'), 3008, 5002) 
+    INTO orders VALUES(70011, 75.29, TO_DATE('2012/08/17', 'YYYY/MM/DD'), 3003, 5007) 
+    INTO orders VALUES(70013, 3045.6, TO_DATE('2012/04/25', 'YYYY/MM/DD'), 3002, 5001) 
+SELECT 1 FROM DUAL
+12 row(s) inserted.
+Statement 22
+select distinct salesman_id from orders
+SALESMAN_ID
+5001
+5003
+5006
+5007
+5005
+5002
+Download CSV
+6 rows selected.
